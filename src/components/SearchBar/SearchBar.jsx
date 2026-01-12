@@ -1,7 +1,20 @@
 import React from "react";
+import { useState } from "react";
 import "./SearchBar.css";
 
 function SearchBar() {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleInputChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const handleSearch = (event) => {
+    event.preventDefault();
+
+    console.log("Searching for:", searchTerm);
+  };
+
   return (
     <div className="search-bar">
       <div className="search-bar-content">

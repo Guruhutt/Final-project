@@ -13,10 +13,8 @@ function App() {
     <div className="page">
       <Header />
       <SearchBar />
-
+      <Articles />
       <Routes>
-        {" "}
-        <Route path="/articles" element={<Articles />} />
         <Route path="/saved-articles" element={<SavedArticals />} />
       </Routes>
       <AboutMe />
