@@ -11,7 +11,10 @@ function SearchBar() {
 
   const handleSearch = (event) => {
     event.preventDefault();
+    fetchData(searchTerm);
+  };
 
+  const fetchData = (searchTerm) => {
     console.log("Searching for:", searchTerm);
   };
 
@@ -27,9 +30,15 @@ function SearchBar() {
           <input
             className="search-bar-input"
             type="text"
-            placeholder="Enter topic..."
+            placeholder="Enter topic"
+            value={searchTerm}
+            onChange={handleInputChange}
           />
-          <button className="search-bar-btn" type="submit">
+          <button
+            className="search-bar-btn"
+            type="submit"
+            onClick={handleSearch}
+          >
             Search
           </button>
         </div>

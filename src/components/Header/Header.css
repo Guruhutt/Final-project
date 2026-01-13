@@ -27,6 +27,11 @@
   line-height: 24px;
 }
 
+.home-link:hover {
+  border-bottom-color: white;
+  border-bottom: 2px solid white;
+}
+
 .header-login-btn {
   background-color: transparent;
   color: white;
@@ -42,4 +47,8 @@
   font-size: 18px;
   line-height: 24px;
   margin-right: 148px;
+}
+
+.header-login-btn:hover {
+  text-decoration: underline;
 }
