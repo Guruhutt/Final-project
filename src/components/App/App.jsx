@@ -9,10 +9,11 @@ import SearchBar from "../SearchBar/SearchBar.jsx";
 import { Routes, Route } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { validateToken } from "../utils/auth.js";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
-  const [searchResults, setSearchResults] = React.useState(false);
+  const [searchResults, setSearchResults] = React.useState([]);
   const [userData, setUserData] = React.useState({ name: "", avatar: "" });
   const [savedArticles, setSavedArticles] = React.useState([]);
   const navigate = useNavigate();

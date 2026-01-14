@@ -8,14 +8,6 @@ const validateURL = (value, helpers) => {
   return helpers.error("string.uri");
 };
 
-const validateClothingItem = celebrate({
-  body: Joi.object().keys({
-    name: Joi.string().required().min(2).max(30).messages({}),
-    imageUrl: Joi.string().required().custom(validateURL),
-    weather: Joi.string().valid("hot", "warm", "cold").required(),
-  }),
-});
-
 const validateItemId = celebrate({
   params: Joi.object().keys({
     itemID: Joi.string().alphanum().length(24).required().messages({
@@ -68,7 +60,6 @@ const validateUserSignin = celebrate({
 });
 
 module.exports = {
-  validateClothingItem,
   validateItemId,
   validateUserUpdate,
   validateUserSignup,
