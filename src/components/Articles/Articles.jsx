@@ -20,7 +20,7 @@ const articles = [
   },
 ];
 
-function Articles() {
+function Articles({ searchResults }) {
   const [isLoading, setIsLoading] = useState(false);
   if (isLoading) {
     return <div className="circle-preloader"> Loading...</div>;
@@ -29,8 +29,11 @@ function Articles() {
     <div className="articles">
       <h2 className="articles-header">Search Results</h2>
       <div className="articles-container">
-        {articles.map((article) => (
+        {searchResults.map((article) => (
           <div key={article.url} className="article-card">
+            <button className="article-save-button"></button>
+            <img className="article-image" src={article.urlToImage} />
+            <p className="article-date" src={article.publishedAt}></p>
             <h3 className="article-title">{article.title}</h3>
             <p className="article-description">{article.description}</p>
           </div>

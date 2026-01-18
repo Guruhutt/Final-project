@@ -3,8 +3,9 @@ import { useState } from "react";
 import "./SearchBar.css";
 import Api from "../utils/api.js";
 
-function SearchBar() {
+function SearchBar({ onSearchResults }) {
   const [searchTerm, setSearchTerm] = useState("");
+
   const api = new Api("1d2d4e9986a94988b06ed2fb054cfb49");
 
   const handleInputChange = (event) => {
@@ -20,7 +21,9 @@ function SearchBar() {
     api
       .getNews(searchTerm)
       .then((data) => {
-        console.log(data);
+        setSearchTerm("");
+        console.log("Fetched data:", data);
+        onSearchResults(data.articles);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);

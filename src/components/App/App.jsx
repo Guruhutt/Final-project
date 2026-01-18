@@ -63,8 +63,8 @@ function App() {
   return (
     <div className="page">
       <Header />
-      <SearchBar />
-      <Articles />
+      <SearchBar onSearchResults={setSearchResults} />
+      <Articles searchResults={searchResults} />
       <Routes>
         <Route path="/saved-articles" element={<SavedArticals />} />
       </Routes>
