@@ -45,6 +45,7 @@ function SearchBar({ onSearchResults }) {
             placeholder="Enter topic"
             value={searchTerm}
             onChange={handleInputChange}
+            onKeyDown={(e) => e.key === "Enter" && handleSearch(e)}
           />
           <button
             className="search-bar-btn"

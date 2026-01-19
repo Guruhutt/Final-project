@@ -14,9 +14,22 @@ import { validateToken } from "../utils/auth.js";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   const [searchResults, setSearchResults] = React.useState([]);
+  const [activeModal, setActiveModal] = React.useState("");
   const [userData, setUserData] = React.useState({ name: "", avatar: "" });
   const [savedArticles, setSavedArticles] = React.useState([]);
   const navigate = useNavigate();
+
+  const closeActiveModal = () => {
+    setActiveModal("");
+  };
+
+  const handleOpenLogin = () => {
+    setActiveModal("login");
+  };
+
+  const handleOpenRegister = () => {
+    setActiveModal("register");
+  };
 
   const handleLogin = ({ email, password }) => {
     if (!email || !password) {
@@ -50,6 +63,25 @@ function App() {
     setSearchResults(results);
   };
 
+  const handleRegistration = ({ email, password, name, avatar }) => {
+    if (password) {
+      auth
+        .signup(email, password, name, avatar)
+        .then((user) => {
+          setUserData(user);
+          return auth.signin(email, password);
+        })
+        .then((data) => {
+          localStorage.setItem("jwt", data.token);
+          validateToken(data.token);
+          setIsLoggedIn(true);
+          closeActiveModal();
+          navigate("/profile");
+        })
+        .catch(console.error);
+    }
+  };
+
   useEffect(() => {
     if (isLoggedIn) {
       fetchSavedArticles()
@@ -62,7 +94,13 @@ function App() {
 
   return (
     <div className="page">
-      <Header />
+      <Header
+        isLoggedIn={isLoggedIn}
+        onLogin={handleOpenLogin}
+        onLogout={handleLogout}
+        onRegister={handleOpenRegister}
+        userData={userData}
+      />
       <SearchBar onSearchResults={setSearchResults} />
       <Articles searchResults={searchResults} />
       <Routes>

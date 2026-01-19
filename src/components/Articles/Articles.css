@@ -21,35 +21,80 @@
   padding: 0 88px;
 }
 
+.article-date {
+  color: #b6bcbf;
+  margin-bottom: 8px;
+  font-family:
+    Source Sans Pro,
+    Arial,
+    Helvetica,
+    sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  margin-top: 20px;
+}
+
 .articles-header {
-  font-size: 32px;
+  font-size: 40px;
   margin-bottom: 20px;
-  color: #222;
+  color: #1a1b22;
   width: 100%;
   text-align: center;
   position: relative;
+  font-family:
+    Roboto Slab,
+    Arial,
+    Helvetica,
+    sans-serif;
+  font-weight: 400;
 }
 
 .article-card {
   position: relative;
-  background-color: #f9f9f9;
+  background-color: #ffffff;
   border: 1px solid #ddd;
   border-radius: 8px;
-  margin: 0 8px;
+  margin: 4px 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 400px;
   height: 576px;
 }
 
 .article-title {
-  font-size: 20px;
-  margin-bottom: 10px;
+  font-size: 26px;
+  margin: 12px 0 16px 0;
   color: #333;
+  font-family:
+    Roboto Slab,
+    Arial,
+    Helvetica,
+    sans-serif;
+  font-weight: 400;
+  text-align: center;
 }
 
 .article-description {
   font-size: 16px;
   color: #666;
+  margin: 0 0 16px 0;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  text-align: center;
+  height: 110px;
+}
+
+.article-source {
+  font-size: 14px;
+  color: #b6bcbf;
+  font-family:
+    Roboto Slab,
+    Arial,
+    Helvetica,
+    sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  position: absolute;
+  bottom: 16px;
 }
 
 .article-image {
@@ -57,7 +102,7 @@
   height: 200px;
   object-fit: cover;
   border-radius: 4px;
-  margin-bottom: 12px;
+  margin: 0;
 }
 
 .article-save-button {
@@ -69,6 +114,43 @@
   color: white;
   top: 24px;
   right: 24px;
+  cursor: pointer;
+  background-image: url(../../assets/bookmark.png);
+  background-size: 24px 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: white;
+}
+
+.article-save-button .saved {
+  background-image: url(../../assets/bookmark_saved.png);
+  background-color: #2f71e5;
+}
+
+.article-save-button:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-image: url(../../assets/bookmark_hover.png);
+}
+
+.article-load-btn {
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: black;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 80px;
+  cursor: pointer;
+  display: block;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  height: 64px;
+  width: 288px;
+}
+
+.article-load-btn:hover {
+  background-color: #e8e8e8;
 }
 
 @keyframes spin {
