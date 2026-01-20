@@ -2,7 +2,7 @@ import React from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
 
-function Header() {
+function Header({ isLoggedIn, onLogin, onLogout, onRegister, userData }) {
   return (
     <header className="app-header">
       <p>NewsExplorer</p>
@@ -10,13 +10,17 @@ function Header() {
         <Link to="/" className="home-link">
           Home
         </Link>
-        {/*make link to saved articles page appears after implementing the page and routing
-      should only be visible when user is logged in
+        {/*
       <Link to="/about" className="about-link">
         saved Articles
       </Link>
       */}
-        <button className="header-login-btn">sign in</button>
+        <button
+          className="header-login-btn"
+          onClick={isLoggedIn ? onLogout : onLogin}
+        >
+          {isLoggedIn ? `logout, ${userData.name}` : "Sign in"}
+        </button>
       </div>
     </header>
   );

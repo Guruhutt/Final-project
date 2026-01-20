@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import React from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm.jsx";
 import "../ModalWithForm/ModalWithForm.css";
 
@@ -37,8 +38,8 @@ export default function LoginModal({
 
   return (
     <ModalWithForm
-      title="login"
-      buttonText="login"
+      title="Sign in"
+      buttonText="Sign in"
       onClose={onClose}
       isOpen={isOpen}
       onSubmit={handleSubmit}
@@ -73,9 +74,11 @@ export default function LoginModal({
           className="modal__login-link"
           onClick={() => swithedToRegister()}
         >
-          or Sign up
+          or <span className="modal__switch">Sign up</span>
         </button>
       </label>
     </ModalWithForm>
   );
 }
+
+export { LoginModal };

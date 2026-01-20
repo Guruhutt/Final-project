@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import React from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "../ModalWithForm/ModalWithForm.css";
 
@@ -52,10 +53,8 @@ export default function RegistrationModal({
       isOpen={isOpen}
       onSubmit={handleSubmit}
     >
-      <div className="modal__form">
-        <label htmlFor="registration-email" className="modal__label">
-          Email:
-        </label>
+      <label htmlFor="registration-email" className="modal__label">
+        Email:
         <input
           className="modal__input"
           id="registration-email"
@@ -65,9 +64,10 @@ export default function RegistrationModal({
           onChange={handleChange}
           required
         />
-        <label htmlFor="registration-password" className="modal__label">
-          Password:
-        </label>
+      </label>
+
+      <label htmlFor="registration-password" className="modal__label">
+        Password:
         <input
           className="modal__input"
           id="registration-password"
@@ -77,9 +77,10 @@ export default function RegistrationModal({
           onChange={handleChange}
           required
         />
-        <label htmlFor="registration-name" className="modal__label">
-          Name:
-        </label>
+      </label>
+
+      <label htmlFor="registration-name" className="modal__label">
+        Name:
         <input
           className="modal__input"
           id="registration-name"
@@ -89,26 +90,17 @@ export default function RegistrationModal({
           onChange={handleChange}
           required
         />
-        <label htmlFor="registration-avatar" className="modal__label">
-          Avatar URL:
-        </label>
-        <input
-          className="modal__input"
-          id="registration-avatar"
-          name="avatar"
-          type="text"
-          value={data.avatar}
-          onChange={handleChange}
-          required
-        />
-        <button
-          type="button"
-          className="modal__register-link"
-          onClick={() => swithedToLogin()}
-        >
-          or Log in
-        </button>
-      </div>
+      </label>
+
+      <button
+        type="button"
+        className="modal__register-link"
+        onClick={() => swithedToLogin()}
+      >
+        or <span className="modal__switch">Log in</span>
+      </button>
     </ModalWithForm>
   );
 }
+
+export { RegistrationModal };
