@@ -17,6 +17,17 @@ class Api {
     );
   }
 
+  savedArticals(token) {
+    return fetch("http://localhost:3000/articles", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(article),
+    }).then(this.checkResponse);
+  }
+
   fetchSavedArticles(token) {
     return fetch("http://localhost:3000/articles", {
       method: "GET",

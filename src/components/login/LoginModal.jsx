@@ -27,11 +27,12 @@ export default function LoginModal({
   const handleSubmit = (e) => {
     e.preventDefault();
     onLogin({ email, password });
+    console.log("Form submitted!");
   };
 
   useEffect(() => {
     setData({
-      email: "",
+      email,
       password: "",
     });
   }, [isOpen]);

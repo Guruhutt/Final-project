@@ -40,10 +40,10 @@ const login = (req, res, next) => {
 };
 
 const createUser = (req, res, next) => {
-  const { name, avatar, password, email } = req.body;
+  const { name, password, email } = req.body;
   bcrypt
     .hash(password, 10)
-    .then((hash) => User.create({ name, avatar, email, password: hash }))
+    .then((hash) => User.create({ name, email, password: hash }))
     .then((user) => {
       const userObj = user.toObject();
       delete userObj.password;
@@ -79,14 +79,10 @@ const getCurrentUser = (req, res, next) => {
 };
 
 const updateUser = (req, res, next) => {
-  const { name, avatar } = req.body;
+  const { name } = req.body;
   const { _id } = req.user;
 
-  User.findByIdAndUpdate(
-    _id,
-    { name, avatar },
-    { new: true, runValidators: true }
-  )
+  User.findByIdAndUpdate(_id, { name }, { new: true, runValidators: true })
     .orFail()
     .then((user) => res.status(200).send(user))
     .catch((err) => {

@@ -2,27 +2,10 @@ import "./Articles.css";
 import { useState } from "react";
 import React from "react";
 
-const articles = [
-  {
-    title: "Article 1",
-    description: "This is the description for Article 1.",
-    url: "https://example.com/article1",
-  },
-  {
-    title: "Article 2",
-    description: "This is the description for Article 2.",
-    url: "https://example.com/article2",
-  },
-  {
-    title: "Article 3",
-    description: "This is the description for Article 3.",
-    url: "https://example.com/article3",
-  },
-];
-
-function Articles({ searchResults }) {
+function Articles({ searchResults, savedArticles, setSavedArticles, api }) {
   const [isLoading, setIsLoading] = useState(false);
   const [visibleCount, setVisibleCount] = useState(3);
+
   if (isLoading) {
     return <div className="circle-preloader"> Loading...</div>;
   }
@@ -32,7 +15,17 @@ function Articles({ searchResults }) {
       <div className="articles-container">
         {searchResults.slice(0, visibleCount).map((article) => (
           <div key={article.url} className="article-card">
-            <button className="article-save-button"></button>
+            <button
+              onClick={() => {
+                api
+                  .saveArticle(article)
+                  .then((savedArticle) => {
+                    setSavedArticles([...savedArticles, savedArticle]);
+                  })
+                  .catch((err) => console.error(err));
+              }}
+              className="article-save-button"
+            ></button>
             <img className="article-image" src={article.urlToImage} />
             <p className="article-date">
               {new Date(article.publishedAt).toLocaleDateString()}

@@ -9,6 +9,8 @@ import SearchBar from "../SearchBar/SearchBar.jsx";
 import LoginModal from "../login/LoginModal.jsx";
 import RegistrationModal from "../Registration/Registration.jsx";
 import * as auth from "../utils/auth.js";
+import Api from "../utils/api.js";
+import ProtectedRoute from "../RouteProtecter/RouteProtecter.jsx";
 import { Routes, Route } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
@@ -20,6 +22,8 @@ function App() {
   const [userData, setUserData] = React.useState({ name: "", email: "" });
   const [savedArticles, setSavedArticles] = React.useState([]);
   const navigate = useNavigate();
+
+  const api = new Api("1d2d4e9986a94988b06ed2fb054cfb49");
 
   const closeActiveModal = () => {
     setActiveModal("");
@@ -41,7 +45,8 @@ function App() {
       .signin(email, password)
       .then((data) => {
         if (data.token) {
-          validateToken(data.token)
+          auth
+            .validateToken(data.token)
             .then((data) => {
               setUserData(data);
               setIsLoggedIn(true);
@@ -86,7 +91,8 @@ function App() {
 
   useEffect(() => {
     if (isLoggedIn) {
-      fetchSavedArticles()
+      api
+        .fetchSavedArticles()
         .then((articles) => {
           setSavedArticles(articles);
         })
@@ -104,9 +110,25 @@ function App() {
         userData={userData}
       />
       <SearchBar onSearchResults={setSearchResults} />
-      <Articles searchResults={searchResults} />
+      <Articles
+        savedArticles={savedArticles}
+        setSavedArticles={setSavedArticles}
+        searchResults={searchResults}
+        api={api}
+      />
+
       <Routes>
-        <Route path="/saved-articles" element={<SavedArticals />} />
+        <Route
+          path="/saved-articles"
+          element={
+            <ProtectedRoute isLoggedIn={isLoggedIn}>
+              <SavedArticals
+                savedArticles={savedArticles}
+                setSavedArticles={setSavedArticles}
+              />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
 
       <LoginModal

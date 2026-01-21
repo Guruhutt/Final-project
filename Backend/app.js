@@ -8,11 +8,11 @@ const { requestLogger, errorLogger } = require("./middleware/logger");
 const NOT_FOUND = require("./utils/not_found");
 
 const app = express();
-const { PORT = 3001 } = process.env;
+const { PORT = 3000 } = process.env;
 const BASE_PATH = `http://localhost:${PORT}`;
 
 mongoose
-  .connect("mongodb://127.0.0.1:27017/wtwr_db")
+  .connect("mongodb://localhost:27017/")
   .then(() => {
     console.log("Connected to DB");
   })
@@ -21,7 +21,7 @@ mongoose
 app.use(express.json());
 app.use(
   cors({
-    origin: ["http://localhost:3000"],
+    origin: ["http://localhost:5173"],
   })
 );
 
