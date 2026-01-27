@@ -1,20 +1,32 @@
 import React from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function Header({ isLoggedIn, onLogin, onLogout, onRegister, userData }) {
   return (
     <header className="app-header">
       <p>NewsExplorer</p>
       <div className="nav-header__container">
-        <Link to="/" className="home-link">
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            `home-link ${isActive ? "home-link_active" : ""}`
+          }
+        >
           Home
-        </Link>
-        {/*
-      <Link to="/about" className="about-link">
-        saved Articles
-      </Link>
-      */}
+        </NavLink>
+
+        {isLoggedIn ? (
+          <NavLink
+            to="/saved-articles"
+            className={({ isActive }) =>
+              `saved-articles-link ${isActive ? "home-link_active" : ""}`
+            }
+          >
+            Saved Articles
+          </NavLink>
+        ) : null}
         <button
           className="header-login-btn"
           onClick={isLoggedIn ? onLogout : onLogin}
