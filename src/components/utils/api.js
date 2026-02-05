@@ -17,25 +17,16 @@ class Api {
     );
   }
 
-  savedArticals(token) {
-    return fetch("http://localhost:3000/articles", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(article),
-    }).then(this.checkResponse);
+  saveArticle(article) {
+    return Promise.resolve(article);
   }
 
-  fetchSavedArticles(token) {
-    return fetch("http://localhost:3000/articles", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: `Bearer ${token}`,
-      },
-    }).then(this.checkResponse);
+  savedArticals() {
+    return Promise.resolve("saved articles data");
+  }
+
+  fetchSavedArticles() {
+    return Promise.resolve([]);
   }
 }
 

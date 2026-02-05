@@ -1,14 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./SavedArticals.css";
+import "./SavedArticles.css";
 
-function SavedArticals() {
+function SavedArticles() {
   return (
-    <div className="saved-articals-container">
+    <div className="saved-articles-container">
       <h2>Saved Articles</h2>
       <p>You have no saved articles.</p>
     </div>
   );
 }
 
-export default SavedArticals;
+export default SavedArticles;

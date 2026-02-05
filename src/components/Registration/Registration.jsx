@@ -73,6 +73,7 @@ export default function RegistrationModal({
           value={data.password}
           onChange={handleChange}
           required
+          minLength={2}
         />
       </label>
 
