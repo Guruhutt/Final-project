@@ -153,6 +153,29 @@
   background-color: #e8e8e8;
 }
 
+.save-wrapper {
+  position: relative;
+}
+
+.nudge-message {
+  position: absolute;
+  right: 64px;
+  top: 26px;
+  background: #ffffff;
+  padding: 11px 20px;
+  border-radius: 10px;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  text-align: center;
+  vertical-align: middle;
+  opacity: 0;
+}
+
+.save-wrapper:hover .nudge-message {
+  opacity: 1;
+}
+
 @keyframes spin {
   100% {
     transform: rotate(360deg);

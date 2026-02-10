@@ -27,11 +27,6 @@
   line-height: 24px;
 }
 
-.home-link:hover {
-  border-bottom-color: white;
-  border-bottom: 2px solid white;
-}
-
 .header-login-btn {
   background-color: transparent;
   color: white;
@@ -49,6 +44,37 @@
   margin-right: 148px;
 }
 
-.header-login-btn:hover {
-  text-decoration: underline;
+.saved-articles-link {
+  text-decoration: none;
+  color: #b6bcbf;
+  margin-right: 42px;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.home-link,
+.saved-articles-link {
+  position: relative;
+  text-decoration: none;
+}
+
+.home-link::after,
+.saved-articles-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -24px;
+  width: 100%;
+  height: 3px;
+  background-color: white;
+  opacity: 0;
+}
+
+.home-link_active::after {
+  opacity: 1;
+}
+.saved-articles-link_active::after {
+  opacity: 1;
 }

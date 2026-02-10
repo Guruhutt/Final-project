@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import React from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "../ModalWithForm/ModalWithForm.css";
@@ -74,6 +73,7 @@ export default function RegistrationModal({
           value={data.password}
           onChange={handleChange}
           required
+          minLength={2}
         />
       </label>
 

@@ -2,7 +2,13 @@ import "./Articles.css";
 import { useState } from "react";
 import React from "react";
 
-function Articles({ searchResults, savedArticles, setSavedArticles, api }) {
+function Articles({
+  searchResults,
+  savedArticles,
+  setSavedArticles,
+  api,
+  isLoggedIn,
+}) {
   const [isLoading, setIsLoading] = useState(false);
   const [visibleCount, setVisibleCount] = useState(3);
 
@@ -15,17 +21,23 @@ function Articles({ searchResults, savedArticles, setSavedArticles, api }) {
       <div className="articles-container">
         {searchResults.slice(0, visibleCount).map((article) => (
           <div key={article.url} className="article-card">
-            <button
-              onClick={() => {
-                api
-                  .saveArticle(article)
-                  .then((savedArticle) => {
+            <div className="save-wrapper">
+              <button
+                className="article-save-button"
+                onClick={() => {
+                  if (!isLoggedIn) return;
+
+                  api.saveArticle(article).then((savedArticle) => {
                     setSavedArticles([...savedArticles, savedArticle]);
-                  })
-                  .catch((err) => console.error(err));
-              }}
-              className="article-save-button"
-            ></button>
+                  });
+                }}
+              ></button>
+
+              {!isLoggedIn && (
+                <div className="nudge-message">Sign in to save articles</div>
+              )}
+            </div>
+
             <img className="article-image" src={article.urlToImage} />
             <p className="article-date">
               {new Date(article.publishedAt).toLocaleDateString()}

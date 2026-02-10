@@ -4,10 +4,11 @@ import Header from "../Header/Header.jsx";
 import Footer from "../Footer/Footer.jsx";
 import AboutMe from "../AboutMe/AboutMe.jsx";
 import Articles from "../Articles/Articles.jsx";
-import SavedArticals from "../SavedArticals/SavedArticals.jsx";
+import SavedArticles from "../SavedArticles/SavedArticles.jsx";
 import SearchBar from "../SearchBar/SearchBar.jsx";
 import LoginModal from "../login/LoginModal.jsx";
 import RegistrationModal from "../Registration/Registration.jsx";
+import SuccessModal from "../SuccessModal/SuccessModal.jsx";
 import * as auth from "../utils/auth.js";
 import Api from "../utils/api.js";
 import ProtectedRoute from "../RouteProtecter/RouteProtecter.jsx";
@@ -42,7 +43,7 @@ function App() {
       return;
     }
     auth
-      .signin(email, password)
+      .authorize(email, password)
       .then((data) => {
         if (data.token) {
           auth
@@ -50,7 +51,7 @@ function App() {
             .then((data) => {
               setUserData(data);
               setIsLoggedIn(true);
-              navigate("/Profile");
+              navigate("/saved-articles");
               closeActiveModal();
             })
             .catch(console.error);
@@ -80,10 +81,9 @@ function App() {
         })
         .then((data) => {
           localStorage.setItem("jwt", data.token);
-          validateToken(data.token);
           setIsLoggedIn(true);
           closeActiveModal();
-          navigate("/profile");
+          navigate("/saved-articles");
         })
         .catch(console.error);
     }
@@ -109,20 +109,30 @@ function App() {
         onRegister={handleOpenRegister}
         userData={userData}
       />
-      <SearchBar onSearchResults={setSearchResults} />
-      <Articles
-        savedArticles={savedArticles}
-        setSavedArticles={setSavedArticles}
-        searchResults={searchResults}
-        api={api}
-      />
 
       <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <SearchBar onSearchResults={setSearchResults} />
+              <Articles
+                savedArticles={savedArticles}
+                setSavedArticles={setSavedArticles}
+                searchResults={searchResults}
+                api={api}
+                isLoggedIn={isLoggedIn}
+              />
+              <AboutMe />
+            </>
+          }
+        />
+
         <Route
           path="/saved-articles"
           element={
             <ProtectedRoute isLoggedIn={isLoggedIn}>
-              <SavedArticals
+              <SavedArticles
                 savedArticles={savedArticles}
                 setSavedArticles={setSavedArticles}
               />
@@ -130,6 +140,8 @@ function App() {
           }
         />
       </Routes>
+
+      <Footer />
 
       <LoginModal
         swithedToRegister={handleOpenRegister}
@@ -147,9 +159,13 @@ function App() {
         onRegistration={handleRegistration}
       />
 
-      <AboutMe />
-      <Footer />
+      <SuccessModal
+        switchedTologin={handleOpenLogin}
+        onClose={closeActiveModal}
+        activeModal={activeModal}
+      />
     </div>
   );
 }
+
 export default App;

@@ -1,68 +1,47 @@
-const baseUrl = "http://localhost:3000";
-
-const checkResponse = (response) => {
-  if (response.ok) {
-    return response.json();
-  }
-  return Promise.reject(`Error: ${response.status}`);
-};
-
 export const signup = (email, password, name) => {
-  return fetch(`${baseUrl}/signup`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ email, password, name }),
-  }).then(checkResponse);
+  const Response = {
+    id: "user-12345",
+    email: email,
+    name: name,
+    password: password,
+  };
+
+  localStorage.setItem("user", JSON.stringify(Response));
+  return Promise.resolve(Response);
 };
 
 export const signin = (email, password) => {
-  return fetch(`${baseUrl}/signin`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ email, password }),
-  })
-    .then(checkResponse)
-    .then((data) => {
-      localStorage.setItem("jwt", data.token);
-      return data;
-    });
+  const Response = {
+    token: "fake-jwt-token-12345",
+    email: email,
+    password: password,
+  };
+
+  localStorage.setItem("jwt", Response.token);
+  return Promise.resolve(Response);
 };
 
 export const authorize = (identifier, password) => {
-  return fetch(`${baseUrl}/auth/local`, {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
+  const storedUser = JSON.parse(localStorage.getItem("user"));
 
-    body: JSON.stringify({ identifier, password }),
-  }).then(checkResponse);
+  if (
+    storedUser &&
+    (identifier === storedUser.email || identifier === storedUser.name) &&
+    password === storedUser.password
+  ) {
+    return Promise.resolve({ token: "fake-jwt-token-12345" });
+  } else {
+    return Promise.reject(new Error("Invalid credentials"));
+  }
 };
 
-export const validateToken = (token) => {
-  return fetch(`${baseUrl}/users/me`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      authorization: `Bearer ${token}`,
-    },
-  }).then(checkResponse);
+export const validateToken = () => {
+  const UserData = {
+    name: "Test User",
+    email: "test@example.com",
+  };
+
+  return Promise.resolve(UserData);
 };
 
-export const updateUserProfile = (token, name, avatar) => {
-  return fetch(`${baseUrl}/users/me`, {
-    method: "PATCH",
-    headers: {
-      "Content-Type": "application/json",
-      authorization: `Bearer ${token}`,
-    },
-    body: JSON.stringify({ name, avatar }),
-  }).then(checkResponse);
-};
-
-export default { signup, signin, authorize, validateToken, updateUserProfile };
+export default { signup, signin, authorize, validateToken };
