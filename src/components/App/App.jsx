@@ -51,7 +51,7 @@ function App() {
             .then((data) => {
               setUserData(data);
               setIsLoggedIn(true);
-              navigate("/Profile");
+              navigate("/saved-articles");
               closeActiveModal();
             })
             .catch(console.error);
@@ -83,7 +83,7 @@ function App() {
           localStorage.setItem("jwt", data.token);
           setIsLoggedIn(true);
           closeActiveModal();
-          navigate("/profile");
+          navigate("/saved-articles");
         })
         .catch(console.error);
     }
