@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { use } from "react";
+import React from "react";
 import Header from "../Header/Header.jsx";
 import Footer from "../Footer/Footer.jsx";
 import AboutMe from "../AboutMe/AboutMe.jsx";
@@ -133,6 +133,7 @@ function App() {
           element={
             <ProtectedRoute isLoggedIn={isLoggedIn}>
               <SavedArticles
+                userData={userData}
                 savedArticles={savedArticles}
                 setSavedArticles={setSavedArticles}
               />

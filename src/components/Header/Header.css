@@ -60,6 +60,29 @@
   text-decoration: none;
 }
 
+.app-header_dark {
+  background-color: white;
+}
+
+.app-header_dark p {
+  color: black;
+}
+
+.app-header_dark .home-link,
+.app-header_dark .saved-articles-link {
+  color: black;
+}
+
+.app-header_dark .header-login-btn {
+  color: black;
+  border-color: black;
+}
+
+.app-header_dark .home-link::after,
+.app-header_dark .saved-articles-link::after {
+  background-color: black;
+}
+
 .home-link::after,
 .saved-articles-link::after {
   content: "";
