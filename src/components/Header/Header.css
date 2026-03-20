@@ -1,3 +1,15 @@
+@font-face {
+  font-family: "Roboto Slab";
+  src: url("../fonts/RobotoSlab-Regular.woff2") format("woff2");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/Roboto-Regular.woff2") format("woff2");
+  font-weight: 400;
+}
+
 .app-header {
   background-color: transparent;
   padding: 10px 0;
@@ -100,4 +112,20 @@
 }
 .saved-articles-link_active::after {
   opacity: 1;
+}
+
+@media screen and (max-width: 768px) {
+  .app-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 20px;
+  }
+
+  .app-header p {
+    margin-left: 16px;
+  }
+
+  .header-login-btn {
+    margin-right: 16px;
+  }
 }
