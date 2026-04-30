@@ -1,12 +1,8 @@
-import React from "react";
 import { useState } from "react";
 import "./SearchBar.css";
-import Api from "../utils/api.js";
 
-function SearchBar({ onSearchResults }) {
+function SearchBar({ onSearchResults, onSearch }) {
   const [searchTerm, setSearchTerm] = useState("");
-
-  const api = new Api("1d2d4e9986a94988b06ed2fb054cfb49");
 
   const handleInputChange = (event) => {
     setSearchTerm(event.target.value);
@@ -14,33 +10,22 @@ function SearchBar({ onSearchResults }) {
 
   const handleSearch = (event) => {
     event.preventDefault();
-    fetchData(searchTerm);
-  };
-
-  const fetchData = (searchTerm) => {
-    api
-      .getNews(searchTerm)
-      .then((data) => {
-        setSearchTerm("");
-        console.log("Fetched data:", data);
-        onSearchResults(data.articles);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
+    onSearch(searchTerm);
   };
 
   return (
-    <div className="search-bar">
-      <div className="search-bar-content">
-        <h1 className="search-bar-header">What's going on in the world?</h1>
-        <p className="search-bar-subheader">
+    <div className="searchBar">
+      <div className="searchBar__content">
+        <h1 className="searchBar__header">
+          What&apos;s going on in the world?
+        </h1>
+        <p className="searchBar__subheader">
           Find the latest news on any topic and save them in your personal
           account.
         </p>
-        <div className="search-bar-container">
+        <div className="searchBar__container">
           <input
-            className="search-bar-input"
+            className="searchBar__input"
             type="text"
             placeholder="Enter topic"
             value={searchTerm}
@@ -48,7 +33,7 @@ function SearchBar({ onSearchResults }) {
             onKeyDown={(e) => e.key === "Enter" && handleSearch(e)}
           />
           <button
-            className="search-bar-btn"
+            className="searchBar__btn"
             type="submit"
             onClick={handleSearch}
           >

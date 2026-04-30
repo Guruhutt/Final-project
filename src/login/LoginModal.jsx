@@ -1,14 +1,8 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm.jsx";
 import "../ModalWithForm/ModalWithForm.css";
 
-export default function LoginModal({
-  onLogin,
-  onClose,
-  isOpen,
-  swithedToRegister,
-}) {
+function LoginModal({ onLogin, onClose, isOpen, swithedToRegister }) {
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -28,15 +22,9 @@ export default function LoginModal({
     onLogin({ email, password });
   };
 
-  useEffect(() => {
-    setData({
-      email: "",
-      password: "",
-    });
-  }, [isOpen]);
-
   return (
     <ModalWithForm
+      key={isOpen}
       title="login"
       buttonText="login"
       onClose={onClose}
@@ -79,3 +67,5 @@ export default function LoginModal({
     </ModalWithForm>
   );
 }
+
+export default LoginModal;

@@ -128,7 +128,7 @@
   top: 24px;
   right: 24px;
   cursor: pointer;
-  background-image: url(../../assets/bookmark.png);
+  background-image: url(../../assets/images/bookmark.svg);
   background-size: 24px 24px;
   background-repeat: no-repeat;
   background-position: center;
@@ -136,13 +136,13 @@
 }
 
 .article-save-button .saved {
-  background-image: url(../../assets/bookmark_saved.png);
+  background-image: url(../../assets/images/bookmark_saved.svg);
   background-color: #2f71e5;
 }
 
 .article-save-button:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  background-image: url(../../assets/bookmark_hover.png);
+  background-image: url(../../assets/images/bookmark_hover.svg);
 }
 
 .article-load-btn {
@@ -158,8 +158,10 @@
   font-family: Roboto, Arial, Helvetica, sans-serif;
   font-weight: 500;
   font-size: 18px;
-  height: 64px;
-  width: 288px;
+  max-height: 64px;
+  max-width: 288px;
+  height: 100%;
+  width: 100%;
 }
 
 .article-load-btn:hover {

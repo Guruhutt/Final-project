@@ -1,10 +1,8 @@
-import React from "react";
 import "./Header.css";
-import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
-function Header({ isLoggedIn, onLogin, onLogout, onRegister, userData }) {
+function Header({ isLoggedIn, onLogin, onLogout, userData }) {
   const location = useLocation();
   const isSavedPage = location.pathname === "/saved-articles";
 

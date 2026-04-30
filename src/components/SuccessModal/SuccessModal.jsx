@@ -1,8 +1,7 @@
 import "./SuccessModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import React from "react";
 
-export function SuccessModal({ onClose, switchedTologin }) {
+function SuccessModal({ onClose, switchedTologin }) {
   return (
     <ModalWithForm onClose={onClose}>
       <div className="success-modal__content">

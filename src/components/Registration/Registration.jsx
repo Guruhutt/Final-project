@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import React from "react";
+import { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "../ModalWithForm/ModalWithForm.css";
 
@@ -34,16 +33,9 @@ export default function RegistrationModal({
     }
   };
 
-  useEffect(() => {
-    setData({
-      email: "",
-      password: "",
-      name: "",
-    });
-  }, [isOpen]);
-
   return (
     <ModalWithForm
+      key={isOpen}
       title="Sign up"
       buttonText="Sign up"
       onClose={onClose}
@@ -60,6 +52,8 @@ export default function RegistrationModal({
           value={data.email}
           onChange={handleChange}
           required
+          placeholder="email"
+          minLength={2}
         />
       </label>
 
@@ -74,6 +68,7 @@ export default function RegistrationModal({
           onChange={handleChange}
           required
           minLength={2}
+          placeholder="password"
         />
       </label>
 
@@ -87,6 +82,8 @@ export default function RegistrationModal({
           value={data.name}
           onChange={handleChange}
           required
+          minLength={2}
+          placeholder="name"
         />
       </label>
 

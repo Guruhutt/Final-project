@@ -12,6 +12,7 @@ import SuccessModal from "../SuccessModal/SuccessModal.jsx";
 import * as auth from "../utils/auth.js";
 import Api from "../utils/api.js";
 import ProtectedRoute from "../RouteProtecter/RouteProtecter.jsx";
+import { NEWS_API } from "../utils/constants.js";
 import { Routes, Route } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
@@ -22,9 +23,26 @@ function App() {
   const [activeModal, setActiveModal] = React.useState("");
   const [userData, setUserData] = React.useState({ name: "", email: "" });
   const [savedArticles, setSavedArticles] = React.useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  const api = new Api("1d2d4e9986a94988b06ed2fb054cfb49");
+  const api = NEWS_API;
+
+  const fetchData = (searchTerm) => {
+    setError(null);
+    api
+      .getNews(searchTerm)
+      .then((data) => {
+        setSearchTerm("");
+        console.log("Fetched data:", data);
+        onSearchResults(data.articles);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        setError("Failed to fetch news articles.");
+      });
+  };
 
   const closeActiveModal = () => {
     setActiveModal("");
@@ -67,10 +85,6 @@ function App() {
     navigate("/");
   };
 
-  const handleSearchResults = (results) => {
-    setSearchResults(results);
-  };
-
   const handleRegistration = ({ email, password, name }) => {
     if (password) {
       auth
@@ -91,8 +105,7 @@ function App() {
 
   useEffect(() => {
     if (isLoggedIn) {
-      api
-        .fetchSavedArticles()
+      Api.fetchSavedArticles()
         .then((articles) => {
           setSavedArticles(articles);
         })
@@ -115,7 +128,18 @@ function App() {
           path="/"
           element={
             <>
-              <SearchBar onSearchResults={setSearchResults} />
+              <SearchBar
+                onSearch={fetchData}
+                onSearchResults={setSearchResults}
+              />
+              {error && (
+                <div
+                  style={{ color: "red", padding: "20px", textAlign: "center" }}
+                >
+                  {error}
+                </div>
+              )}
+
               <Articles
                 savedArticles={savedArticles}
                 setSavedArticles={setSavedArticles}
