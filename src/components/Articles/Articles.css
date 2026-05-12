@@ -225,3 +225,18 @@
     transform: rotate(360deg);
   }
 }
+
+@media screen and (max-width: 430px) {
+  .articles-header {
+    font-size: 28px;
+    height: auto;
+  }
+
+  .article-card {
+    height: auto;
+  }
+
+  .article-description {
+    height: auto;
+  }
+}
