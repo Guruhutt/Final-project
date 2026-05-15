@@ -1,0 +1,43 @@
+import "./Header.css";
+import { NavLink } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+
+function Header({ isLoggedIn, onLogin, onLogout, userData }) {
+  const location = useLocation();
+  const isSavedPage = location.pathname === "/saved-articles";
+
+  return (
+    <header className={`app-header ${isSavedPage ? "app-header_dark" : ""}`}>
+      <p>NewsExplorer</p>
+      <div className="nav-header__container">
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            `home-link ${isActive ? "home-link_active" : ""}`
+          }
+        >
+          Home
+        </NavLink>
+
+        {isLoggedIn ? (
+          <NavLink
+            to="/saved-articles"
+            className={({ isActive }) =>
+              `saved-articles-link ${isActive ? "home-link_active" : ""}`
+            }
+          >
+            Saved Articles
+          </NavLink>
+        ) : null}
+        <button
+          className="header-login-btn"
+          onClick={isLoggedIn ? onLogout : onLogin}
+        >
+          {isLoggedIn ? `logout, ${userData.name}` : "Sign in"}
+        </button>
+      </div>
+    </header>
+  );
+}
+
+export default Header;
