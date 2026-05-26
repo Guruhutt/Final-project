@@ -12,6 +12,7 @@ import SuccessModal from "../SuccessModal/SuccessModal.jsx";
 import * as auth from "../utils/auth.js";
 import Api from "../utils/api.js";
 import ProtectedRoute from "../RouteProtecter/RouteProtecter.jsx";
+import { useState } from "react";
 import { NEWS_API } from "../utils/constants.js";
 import { Routes, Route } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -23,7 +24,7 @@ function App() {
   const [activeModal, setActiveModal] = React.useState("");
   const [userData, setUserData] = React.useState({ name: "", email: "" });
   const [savedArticles, setSavedArticles] = React.useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState(" ");
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
@@ -36,7 +37,7 @@ function App() {
       .then((data) => {
         setSearchTerm("");
         console.log("Fetched data:", data);
-        onSearchResults(data.articles);
+        setSearchResults(data.articles);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -105,7 +106,8 @@ function App() {
 
   useEffect(() => {
     if (isLoggedIn) {
-      Api.fetchSavedArticles()
+      api
+        .fetchSavedArticles()
         .then((articles) => {
           setSavedArticles(articles);
         })
@@ -128,10 +130,7 @@ function App() {
           path="/"
           element={
             <>
-              <SearchBar
-                onSearch={fetchData}
-                onSearchResults={setSearchResults}
-              />
+              <SearchBar onSearch={fetchData} />
               {error && (
                 <div
                   style={{ color: "red", padding: "20px", textAlign: "center" }}

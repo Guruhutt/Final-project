@@ -1,6 +1,7 @@
 import "../Articles/Articles.css";
 import "./SavedArticles.css";
 import ArticleCard from "../Articles/ArticleCards";
+import React from "react";
 
 function SavedArticles({ savedArticles, userData }) {
   return (

@@ -1,4 +1,5 @@
 import "./Articles.css";
+import React from "react";
 import { useState } from "react";
 import ArticleCard from "./ArticleCards";
 
@@ -19,9 +20,12 @@ function Articles({
     <div className="articles">
       <h2 className="articles__header">Search Results</h2>
       <div className="articles__container">
-        {searchResults.slice(0, visibleCount).map((article) => (
-          <ArticleCard key={article.url} article={article} />
-        ))}
+        {searchResults &&
+          searchResults
+            .slice(0, visibleCount)
+            .map((article) => (
+              <ArticleCard key={article.url} article={article} />
+            ))}
       </div>
       <button
         onClick={() => setVisibleCount(visibleCount + 3)}
@@ -32,3 +36,5 @@ function Articles({
     </div>
   );
 }
+
+export default Articles;

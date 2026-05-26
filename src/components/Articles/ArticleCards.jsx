@@ -1,8 +1,13 @@
-import "./ArticleCards.css";
+import "./Articles.css";
+import React from "react";
+import articles from "./Articles.jsx";
 
 function ArticleCard({ article }) {
   return (
     <div className="article__card">
+      <div className="save-wrapper">
+        <button className="article__save-button"></button>
+      </div>
       <img
         className="article__image"
         src={article.urlToImage}

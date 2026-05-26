@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "../ModalWithForm/ModalWithForm.css";
+import React from "react";
 
 export default function RegistrationModal({
   onRegistration,

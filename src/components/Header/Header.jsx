@@ -1,4 +1,5 @@
 import "./Header.css";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
@@ -8,7 +9,7 @@ function Header({ isLoggedIn, onLogin, onLogout, userData }) {
 
   return (
     <header className={`app-header ${isSavedPage ? "app-header_dark" : ""}`}>
-      <p>NewsExplorer</p>
+      <p className="app-header__title">NewsExplorer</p>
       <div className="nav-header__container">
         <NavLink
           to="/"

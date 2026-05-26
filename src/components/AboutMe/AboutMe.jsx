@@ -1,5 +1,6 @@
 import "./AboutMe.css";
-import placeHolder from "../../assets/placeHolder.png";
+import React from "react";
+import placeHolder from "../../assets/images/placeHolder.svg";
 
 function AboutMe() {
   return (

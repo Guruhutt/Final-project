@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./components/App/App.jsx";
 import "./index.css";
-import fonts from "./assets/fonts/fonts.css";
+import "./components/vendor/fonts.css";
 import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.createRoot(document.getElementById("root")).render(

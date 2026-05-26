@@ -1,5 +1,6 @@
 import "./SuccessModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import React from "react";
 
 function SuccessModal({ onClose, switchedTologin }) {
   return (
