@@ -1,6 +1,6 @@
 import "./Articles.css";
 import React from "react";
-import articles from "./Articles.jsx";
+import "./Articles.jsx";
 
 function ArticleCard({ article }) {
   return (
