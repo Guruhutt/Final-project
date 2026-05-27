@@ -4,7 +4,6 @@
   height: 576px;
   z-index: -1;
   background-size: cover;
-  background-position: center;
 }
 
 .searchBar__input {
