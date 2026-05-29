@@ -16,6 +16,7 @@ function Articles({
   if (isLoading) {
     return <div className="circle-preloader"> Loading...</div>;
   }
+
   return (
     <div className="articles">
       <h2 className="articles__header">Search Results</h2>

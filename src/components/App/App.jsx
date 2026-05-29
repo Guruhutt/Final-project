@@ -139,13 +139,15 @@ function App() {
                 </div>
               )}
 
-              <Articles
-                savedArticles={savedArticles}
-                setSavedArticles={setSavedArticles}
-                searchResults={searchResults}
-                api={api}
-                isLoggedIn={isLoggedIn}
-              />
+              {searchResults.length > 0 && (
+                <Articles
+                  savedArticles={savedArticles}
+                  setSavedArticles={setSavedArticles}
+                  searchResults={searchResults}
+                  api={api}
+                  isLoggedIn={isLoggedIn}
+                />
+              )}
               <AboutMe />
             </>
           }
