@@ -57,14 +57,17 @@ function LoginModal({ onLogin, onClose, isOpen, swithedToRegister }) {
           value={data.password}
           required
         />
-        <button
-          type="button"
-          className="modal__login-link"
-          onClick={() => swithedToRegister()}
-        >
-          or Sign up
-        </button>
       </label>
+      <button type="submit" className="modal__submit">
+        Login
+      </button>
+      <button
+        type="button"
+        className="modal__login-link"
+        onClick={() => swithedToRegister()}
+      >
+        or <span className="modal__switch">Sign up</span>
+      </button>
     </ModalWithForm>
   );
 }

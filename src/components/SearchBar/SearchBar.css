@@ -98,3 +98,35 @@
     padding-left: 16px;
   }
 }
+
+@media screen and (max-width: 360px) {
+  .searchBar__header {
+    font-size: 28px;
+  }
+
+  .searchBar__subheader {
+    font-size: 14px;
+  }
+
+  .searchBar__btn {
+    width: 100px;
+    height: 40px;
+    font-size: 14px;
+    position: relative;
+
+    align-items: center;
+    max-width: 330px;
+    width: 100%;
+  }
+
+  .searchBar__input {
+    height: 40px;
+    font-size: 14px;
+    padding-left: 12px;
+  }
+
+  .searchBar__container {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

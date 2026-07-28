@@ -8,6 +8,27 @@
   margin: 0;
 }
 
-.footer__copyright {
-  margin: 0;
+.footer__copyright-home {
+  margin: 0 16px 0 0;
+}
+
+.footer__copyright-tripleTen {
+  margin: 0 16px 0 0;
+}
+
+.footer__separator {
+  display: flex;
+  margin: 0 104px 0 0;
+  gap: 24px;
+  align-items: center;
+}
+
+.footer__linkedin-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.footer__github-icon {
+  width: 24px;
+  height: 24px;
 }

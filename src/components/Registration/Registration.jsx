@@ -87,7 +87,9 @@ export default function RegistrationModal({
           placeholder="name"
         />
       </label>
-
+      <button type="submit" className="modal__submit">
+        sign up
+      </button>
       <button
         type="button"
         className="modal__register-link"
