@@ -1,0 +1,219 @@
+.circle-preloader {
+  display: block;
+  width: 50px;
+  height: 50px;
+  border: 4px solid #444;
+  border-bottom-color: #888;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  animation: spin 0.75s infinite linear;
+}
+
+.articles__container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  justify-content: space-between;
+  padding: 0 88px;
+  gap: 8px;
+}
+
+.article__date {
+  color: #b6bcbf;
+  margin-bottom: 8px;
+  font-family:
+    Source Sans Pro,
+    Arial,
+    Helvetica,
+    sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.articles__header {
+  font-size: 40px;
+  margin-bottom: 20px;
+  color: #1a1b22;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  font-family: roboto-slab, Arial, Helvetica, sans-serif;
+  font-weight: 400;
+}
+
+.article__card {
+  position: relative;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin: 4px 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  height: 576px;
+}
+
+.article__title {
+  font-size: 26px;
+  margin: 12px 0 16px 0;
+  color: #333;
+  font-family: roboto-slab, Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  text-align: center;
+}
+
+.article__description {
+  font-size: 16px;
+  color: #666;
+  margin: 0 0 16px 0;
+  font-family: roboto, Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  text-align: center;
+  height: 110px;
+}
+
+.article__source {
+  font-size: 14px;
+  color: #b6bcbf;
+  font-family: roboto-slab, Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  position: absolute;
+  bottom: 16px;
+}
+
+.article__image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin: 0;
+}
+
+.article__save-button {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  top: 24px;
+  right: 24px;
+  cursor: pointer;
+  background-image: url(../../assets/images/bookmark.svg);
+  background-size: 24px 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: white;
+}
+
+.article__save-button .saved {
+  background-image: url(../../assets/images/bookmark_saved.svg);
+  background-color: #2f71e5;
+}
+
+.article__save-button:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-image: url(../../assets/images/bookmark_hover.svg);
+}
+
+.article__load-btn {
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: black;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 80px;
+  cursor: pointer;
+  display: block;
+  font-family: roboto, Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  max-height: 64px;
+  max-width: 288px;
+  height: 100%;
+  width: 100%;
+}
+
+.article-load-btn:hover {
+  background-color: #e8e8e8;
+}
+
+.save-wrapper {
+  position: relative;
+}
+
+.nudge-message {
+  position: absolute;
+  right: 64px;
+  top: 26px;
+  background: #ffffff;
+  padding: 11px 20px;
+  border-radius: 10px;
+  font-family: roboto, Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  text-align: center;
+  vertical-align: middle;
+  opacity: 0;
+}
+
+.save-wrapper:hover .nudge-message {
+  opacity: 1;
+}
+
+.saved-articles-grid {
+  list-style: none;
+  padding: 0;
+  margin: 40px auto;
+  max-width: 1200px;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.article-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 768px) {
+  .articles-container {
+    grid-template-columns: 1fr;
+    padding: 0 16px;
+  }
+
+  .article-card {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .articles-header {
+    font-size: 28px;
+    height: auto;
+  }
+
+  .article-card {
+    height: auto;
+  }
+
+  .article-description {
+    height: auto;
+  }
+}

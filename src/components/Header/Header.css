@@ -1,0 +1,166 @@
+.app-header {
+  background-color: transparent;
+  padding: 10px 0;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  width: 100%;
+}
+
+.app-header__title {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0 0 0 104px;
+  color: white;
+}
+
+.home-link {
+  text-decoration: none;
+  font-size: 18px;
+  color: white;
+  margin-right: 42px;
+  font-family: roboto, Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.header-login-btn {
+  background-color: transparent;
+  color: white;
+  border: 1px solid #ccc;
+  padding: 8px 16px;
+  cursor: pointer;
+  opacity: 1;
+  border-radius: 100px;
+  width: 176px;
+  height: 48px;
+  font-family: roboto, Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  margin-right: 148px;
+}
+
+.saved-articles-link {
+  text-decoration: none;
+  color: #b6bcbf;
+  margin-right: 42px;
+  font-family: roboto, Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.home-link,
+.saved-articles-link {
+  position: relative;
+  text-decoration: none;
+}
+
+.app-header_dark {
+  background-color: white;
+}
+
+.app-header_dark p {
+  color: black;
+}
+
+.app-header_dark .home-link,
+.app-header_dark .saved-articles-link {
+  color: black;
+}
+
+.app-header_dark .header-login-btn {
+  color: black;
+  border-color: black;
+}
+
+.app-header_dark .home-link::after,
+.app-header_dark .saved-articles-link::after {
+  background-color: black;
+}
+
+.home-link::after,
+.saved-articles-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -24px;
+  width: 100%;
+  height: 3px;
+  background-color: white;
+  opacity: 0;
+}
+
+.home-link_active::after {
+  opacity: 1;
+}
+
+.saved-articles-link_active::after {
+  opacity: 1;
+}
+
+.hamburger-btn {
+  display: none;
+}
+
+@media screen and (max-width: 360px) {
+  .nav-header__container {
+    display: none;
+  }
+
+  .hamburger-btn {
+    display: block;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+  }
+
+  .mobile-menu {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background: #1a1b22;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .mobile-link {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+  }
+
+  .mobile-login-btn {
+    height: 56px;
+    border-radius: 100px;
+    border: 1px solid white;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .app-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 20px;
+  }
+
+  .app-header__title {
+    margin-left: 16px;
+  }
+
+  .header-login-btn {
+    margin-right: 16px;
+  }
+}
