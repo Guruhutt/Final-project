@@ -3,6 +3,8 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
+import hamburgerIcon from "../../assets/images/Ham_menu.svg";
+import closeIcon from "../../assets/images/Ham_close.svg";
 
 function Header({ isLoggedIn, onLogin, onLogout, userData }) {
   const location = useLocation();
@@ -14,10 +16,10 @@ function Header({ isLoggedIn, onLogin, onLogout, userData }) {
       <p className="app-header__title">NewsExplorer</p>
 
       <button
-        className="nav-header__menu-btn"
+        className="hamburger-btn"
         onClick={() => setIsMenuOpen(!isMenuOpen)}
       >
-        {isMenuOpen ? "✕" : "☰"}
+        {isMenuOpen ? <img src={closeIcon} alt="close menu" /> : <img src={hamburgerIcon} alt="hamburger menu" />}
       </button>
 
       <div className="nav-header__container">
