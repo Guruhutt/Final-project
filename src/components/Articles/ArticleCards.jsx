@@ -1,12 +1,47 @@
 import "./Articles.css";
 import React from "react";
-import "./Articles.jsx";
 
-function ArticleCard({ article }) {
+
+function ArticleCard({ article, setSavedArticles, savedArticles, searchTerm ,  isLoggedIn })
+ { 
   return (
     <div className="article__card">
       <div className="save-wrapper">
-        <button className="article__save-button"></button>
+         {!isLoggedIn && (
+    <span className="save-tooltip">
+      Sign in to save articles
+    </span>
+  )}
+        <button  className={`article__save-button ${
+    savedArticles.some(
+      (savedArticle) => savedArticle.url === article.url
+    )
+      ? "saved"
+      : ""
+  }`} type="button"
+        onClick={() => {
+  setSavedArticles((prevArticles) => {
+    const isSaved = prevArticles.some(
+      (savedArticle) => savedArticle.url === article.url
+    );
+
+    if (isSaved) {
+      return prevArticles.filter(
+        (savedArticle) => savedArticle.url !== article.url
+      );
+    }
+
+    return [
+  ...prevArticles,
+  {
+    ...article,
+    keywords: [searchTerm],
+  },
+];
+  });
+}}
+>
+</button>
       </div>
       <img
         className="article__image"

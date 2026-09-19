@@ -3,7 +3,8 @@ import "./SavedArticles.css";
 import ArticleCard from "../Articles/ArticleCards";
 import React from "react";
 
-function SavedArticles({ savedArticles, userData }) {
+function SavedArticles({ savedArticles, userData, setSavedArticles }) {
+  console.log("SAVED ARTICLE:", savedArticles);
   return (
     <div className="saved-articles-container">
       <h2>Saved Articles</h2>
@@ -15,14 +16,14 @@ function SavedArticles({ savedArticles, userData }) {
         </h2>
 
         <p className="saved-articles-keywords">
-          By keywords: Nature, Yellowstone, and 2 other
+          By keywords: {savedArticles.length > 0 ? savedArticles.map((article) => article.keywords?.join(", ") || "No keywords").join(", ") : "No keywords"}
         </p>
       </div>
       {savedArticles.length > 0 ? (
         <ul className="saved-articles-grid">
           {savedArticles.map((article, index) => (
             <li key={index} className="article-card">
-              <ArticleCard article={article} />
+              <ArticleCard article={article} setSavedArticles={setSavedArticles} savedArticles={savedArticles} />
             </li>
           ))}
         </ul>

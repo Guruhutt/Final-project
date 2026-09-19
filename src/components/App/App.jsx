@@ -31,19 +31,19 @@ function App() {
   const api = NEWS_API;
 
   const fetchData = (searchTerm) => {
-    setError(null);
-    api
-      .getNews(searchTerm)
-      .then((data) => {
-        setSearchTerm("");
-        console.log("Fetched data:", data);
-        setSearchResults(data.articles);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-        setError("Failed to fetch news articles.");
-      });
-  };
+  setError(null);
+
+  api
+    .getNews(searchTerm)
+    .then((data) => {
+      setSearchTerm(searchTerm);
+      setSearchResults(data.articles);
+    })
+    .catch((error) => {
+      console.error(error);
+      setError("Failed to fetch news articles.");
+    });
+};
 
   const closeActiveModal = () => {
     setActiveModal("");
@@ -141,11 +141,12 @@ function App() {
 
               {searchResults.length > 0 && (
                 <Articles
+                  isLoggedIn={isLoggedIn}
+                  searchTerm={searchTerm}
                   savedArticles={savedArticles}
                   setSavedArticles={setSavedArticles}
                   searchResults={searchResults}
                   api={api}
-                  isLoggedIn={isLoggedIn}
                 />
               )}
               <AboutMe />

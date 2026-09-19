@@ -9,9 +9,12 @@ function Articles({
   setSavedArticles,
   api,
   isLoggedIn,
+  onLogin,
+  searchTerm
 }) {
   const [isLoading] = useState(false);
   const [visibleCount, setVisibleCount] = useState(3);
+ 
 
   if (isLoading) {
     return <div className="circle-preloader"> Loading...</div>;
@@ -25,7 +28,7 @@ function Articles({
           searchResults
             .slice(0, visibleCount)
             .map((article) => (
-              <ArticleCard key={article.url} article={article} />
+              <ArticleCard key={article.url} article={article} searchTerm={searchTerm} savedArticles={savedArticles} isLoggedIn={isLoggedIn} onLogin={onLogin} setSavedArticles={setSavedArticles} />
             ))}
       </div>
       <button

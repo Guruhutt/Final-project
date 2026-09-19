@@ -112,12 +112,12 @@
   background-color: white;
 }
 
-.article__save-button .saved {
+.article__save-button.saved {
   background-image: url(../../assets/images/bookmark_saved.svg);
-  background-color: #2f71e5;
+  background-color: white;
 }
 
-.article__save-button:hover {
+.article__save-button:not(.saved):hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   background-image: url(../../assets/images/bookmark_hover.svg);
 }
@@ -147,6 +147,24 @@
 
 .save-wrapper {
   position: relative;
+}
+
+.save-tooltip {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 48px;
+  white-space: nowrap;
+  background: white;
+  border: 1px solid #2f71e5;
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 10px;
+  z-index: 10;
+}
+
+.save-wrapper:hover .save-tooltip {
+  display: block;
 }
 
 .nudge-message {
