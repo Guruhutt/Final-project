@@ -12,8 +12,8 @@ function Header({ isLoggedIn, onLogin, onLogout, userData }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className={`app-header ${isSavedPage ? "app-header_dark" : ""}`}>
-      <p className="app-header__title">NewsExplorer</p>
+    <header className={`header ${isSavedPage ? "header_dark" : ""}`}>
+      <p className="header__title">NewsExplorer</p>
 
       <button
         className="hamburger-btn"

@@ -1,15 +1,22 @@
 .footer {
   display: flex;
   justify-content: space-between;
-  padding: 40px;
+  align-items: center;
+  height: 60px;
+  padding: 0 40px;
+  box-sizing: border-box;
 }
 
 .footer__copyright-name {
   margin: 0;
+  color: #b6bcbf;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
 }
 
 .footer__copyright-home {
-  margin: 0 16px 0 0;
+  margin: 0;
 }
 
 .footer__copyright-tripleTen {
@@ -18,17 +25,17 @@
 
 .footer__separator {
   display: flex;
-  margin: 0 104px 0 0;
-  gap: 24px;
   align-items: center;
+  gap: 24px;
+  margin: 0;
 }
 
 .footer__linkedin-icon {
-  width: 24px;
-  height: 24px;
+  width: 16px;
+  height: 16px;
 }
 
 .footer__github-icon {
-  width: 24px;
-  height: 24px;
+  width: 16px;
+  height: 16px;
 }

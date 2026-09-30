@@ -1,6 +1,6 @@
 import "./AboutMe.css";
 import React from "react";
-import placeHolder from "../../assets/images/placeHolder.svg";
+import Dev_photo from "../../assets/images/Dev_photo.jpg";
 
 function AboutMe() {
   return (
@@ -14,7 +14,7 @@ function AboutMe() {
           recipes.
         </p>
       </div>
-      <img className="about-me__image" src={placeHolder} alt="" />
+      <img className="about-me__image" src={Dev_photo} alt="Developer Photo" />
     </div>
   );
 }
