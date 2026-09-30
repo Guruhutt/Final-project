@@ -24,15 +24,11 @@
 
 .article__date {
   color: #b6bcbf;
-  margin-bottom: 8px;
-  font-family:
-    Source Sans Pro,
-    Arial,
-    Helvetica,
-    sans-serif;
+  margin: 20px 24px 8px;
+  font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
   font-weight: 400;
   font-size: 18px;
-  margin-top: 20px;
+  line-height: 24px;
 }
 
 .articles__header {
@@ -56,43 +52,49 @@
   max-width: 400px;
   width: 100%;
   height: 576px;
+  overflow: hidden;
 }
 
 .article__title {
   font-size: 26px;
-  margin: 12px 0 16px 0;
+  line-height: 31px;
+  margin: 12px 24px 16px;
   color: #333;
-  font-family: roboto-slab, Arial, Helvetica, sans-serif;
+  font-family: "Roboto Slab", Arial, Helvetica, sans-serif;
   font-weight: 400;
-  text-align: center;
+  text-align: left;
 }
 
 .article__description {
   font-size: 16px;
-  color: #666;
-  margin: 0 0 16px 0;
-  font-family: roboto, Arial, Helvetica, sans-serif;
+  line-height: 24px;
+  color: #333;
+  margin: 0 24px;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
   font-weight: 400;
-  text-align: center;
+  text-align: left;
   height: 110px;
+  overflow: hidden;
 }
 
 .article__source {
   font-size: 14px;
+  line-height: 17px;
   color: #b6bcbf;
-  font-family: roboto-slab, Arial, Helvetica, sans-serif;
+  margin: 0 24px;
+  font-family: "Roboto Slab", Arial, Helvetica, sans-serif;
   font-weight: 700;
   text-transform: uppercase;
   position: absolute;
   bottom: 16px;
+  left: 0;
 }
 
 .article__image {
   width: 100%;
   height: 200px;
   object-fit: cover;
-  border-radius: 4px;
-  margin: 0;
+  display: block;
 }
 
 .article__save-button {
@@ -141,8 +143,20 @@
   width: 100%;
 }
 
-.article-load-btn:hover {
+.article__load-btn:hover {
   background-color: #e8e8e8;
+}
+
+.article__keyword {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  background-color: white;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 500;
+  z-index: 2;
 }
 
 .save-wrapper {
@@ -167,9 +181,9 @@
   display: block;
 }
 
-.nudge-message {
+.save-login-popup {
   position: absolute;
-  right: 64px;
+  right: 69px;
   top: 26px;
   background: #ffffff;
   padding: 11px 20px;
@@ -182,7 +196,7 @@
   opacity: 0;
 }
 
-.save-wrapper:hover .nudge-message {
+.save-wrapper:hover .save-login-popup {
   opacity: 1;
 }
 

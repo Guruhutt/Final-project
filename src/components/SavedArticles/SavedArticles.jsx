@@ -4,7 +4,6 @@ import ArticleCard from "../Articles/ArticleCards";
 import React from "react";
 
 function SavedArticles({ savedArticles, userData, setSavedArticles }) {
-  console.log("SAVED ARTICLE:", savedArticles);
   return (
     <div className="saved-articles-container">
       <h2>Saved Articles</h2>
@@ -23,7 +22,7 @@ function SavedArticles({ savedArticles, userData, setSavedArticles }) {
         <ul className="saved-articles-grid">
           {savedArticles.map((article, index) => (
             <li key={index} className="article-card">
-              <ArticleCard article={article} setSavedArticles={setSavedArticles} savedArticles={savedArticles} />
+              <ArticleCard article={article} setSavedArticles={setSavedArticles} savedArticles={savedArticles} showKeyword={true}/>
             </li>
           ))}
         </ul>

@@ -141,6 +141,7 @@ function App() {
 
               {searchResults.length > 0 && (
                 <Articles
+                  onLogin={handleOpenLogin}
                   isLoggedIn={isLoggedIn}
                   searchTerm={searchTerm}
                   savedArticles={savedArticles}

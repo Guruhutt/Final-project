@@ -1,56 +1,75 @@
 import "./Articles.css";
 import React from "react";
 
+function ArticleCard({
+  article,
+  setSavedArticles,
+  savedArticles,
+  searchTerm,
+  showKeyword,
+  isLoggedIn,
+  onLogin,
+}) {
+  const isSaved = savedArticles.some(
+    (savedArticle) => savedArticle.url === article.url
+  );
 
-function ArticleCard({ article, setSavedArticles, savedArticles, searchTerm ,  isLoggedIn })
- { 
   return (
     <div className="article__card">
       <div className="save-wrapper">
-         {!isLoggedIn && (
-    <span className="save-tooltip">
+  <button
+    className={`article__save-button ${isSaved ? "saved" : ""}`}
+    type="button"
+    onClick={() => {
+      if (!isLoggedIn) {
+        onLogin();
+        return;
+      }
+
+      setSavedArticles((prevArticles) => {
+        if (isSaved) {
+          return prevArticles.filter(
+            (savedArticle) => savedArticle.url !== article.url
+          );
+        }
+
+        return [
+          ...prevArticles,
+          {
+            ...article,
+            keywords: [searchTerm],
+          },
+        ];
+      });
+    }}
+  ></button>
+
+  {!isLoggedIn && (
+    <div className="save-login-popup">
       Sign in to save articles
-    </span>
+    </div>
   )}
-        <button  className={`article__save-button ${
-    savedArticles.some(
-      (savedArticle) => savedArticle.url === article.url
-    )
-      ? "saved"
-      : ""
-  }`} type="button"
-        onClick={() => {
-  setSavedArticles((prevArticles) => {
-    const isSaved = prevArticles.some(
-      (savedArticle) => savedArticle.url === article.url
-    );
 
-    if (isSaved) {
-      return prevArticles.filter(
-        (savedArticle) => savedArticle.url !== article.url
-      );
-    }
+{showKeyword && (
+  <div className="article__keyword">
+    {article.keywords?.join(", ")}
+  </div>
+)}
 
-    return [
-  ...prevArticles,
-  {
-    ...article,
-    keywords: [searchTerm],
-  },
-];
-  });
-}}
->
-</button>
-      </div>
+</div>
+
       <img
         className="article__image"
         src={article.urlToImage}
         alt={article.title}
       />
+
       <p className="article__date">{article.publishedAt}</p>
+
       <h1 className="article__title">{article.title}</h1>
+
       <p className="article__description">{article.description}</p>
+
       <p className="article__source">{article.source.name}</p>
     </div>
   );
