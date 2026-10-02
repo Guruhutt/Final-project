@@ -1,0 +1,20 @@
+.saved-articles-header {
+  padding: 40px 104px;
+  background: #f5f6f7;
+}
+
+.saved-articles-label {
+  color: #b6bcbf;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.saved-articles-title {
+  font-size: 40px;
+  font-weight: 400;
+  margin: 0 0 16px 0;
+}
+
+.saved-articles-keywords {
+  font-size: 18px;
+}
