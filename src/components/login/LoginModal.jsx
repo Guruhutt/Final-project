@@ -10,18 +10,47 @@ function LoginModal({ onLogin, onClose, isOpen, swithedToRegister }) {
   });
 
   const { email, password } = data;
+  const [errors, setErrors] = useState({});
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onLogin({ email, password });
-  };
+
+  
+const handleChange = (e) => {
+  const { name, value } = e.target;
+
+  setData((prevData) => ({
+    ...prevData,
+    [name]: value,
+  }));
+
+  setErrors((prevErrors) => ({
+    ...prevErrors,
+    [name]: "",
+  }));
+};
+
+const handleSubmit = (e) => {
+  e.preventDefault();
+
+  const newErrors = {};
+
+  if (!data.email.trim()) {
+    newErrors.email = "Email is required";
+  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+    newErrors.email = "Please enter a valid email address";
+  }
+
+  if (!data.password.trim()) {
+    newErrors.password = "Password is required";
+  }
+
+  setErrors(newErrors);
+
+  if (Object.keys(newErrors).length > 0) {
+    return;
+  }
+
+  onLogin({ email, password });
+};
 
   return (
     <ModalWithForm
@@ -44,6 +73,7 @@ function LoginModal({ onLogin, onClose, isOpen, swithedToRegister }) {
           value={data.email}
           required
         />
+        {errors.email && <span className="modal__error">{errors.email}</span>}
       </label>
       <label htmlFor="login-password" className="modal__label">
         Password
@@ -57,6 +87,7 @@ function LoginModal({ onLogin, onClose, isOpen, swithedToRegister }) {
           value={data.password}
           required
         />
+        {errors.password && <span className="modal__error">{errors.password}</span>}
       </label>
       <button type="submit" className="modal__submit">
         Login

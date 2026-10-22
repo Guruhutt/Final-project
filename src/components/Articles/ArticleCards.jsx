@@ -9,6 +9,7 @@ function ArticleCard({
   showKeyword,
   isLoggedIn,
   onLogin,
+  isSavedPage = false,
 }) {
   const isSaved = savedArticles.some(
     (savedArticle) => savedArticle.url === article.url
@@ -18,13 +19,26 @@ function ArticleCard({
     <div className="article__card">
       <div className="save-wrapper">
   <button
-    className={`article__save-button ${isSaved ? "saved" : ""}`}
+    className={`article__save-button ${
+  isSavedPage ? "delete-button" : isSaved ? "saved" : ""
+}`}
     type="button"
     onClick={() => {
-      if (!isLoggedIn) {
-        onLogin();
-        return;
-      }
+  
+  if (isSavedPage) {
+    setSavedArticles((prevArticles) =>
+      prevArticles.filter(
+        (savedArticle) => savedArticle.url !== article.url
+      )
+    );
+    return;
+  }
+
+
+  if (!isLoggedIn) {
+    onLogin();
+    return;
+  }
 
       setSavedArticles((prevArticles) => {
         if (isSaved) {
@@ -44,11 +58,17 @@ function ArticleCard({
     }}
   ></button>
 
-  {!isLoggedIn && (
-    <div className="save-login-popup">
-      Sign in to save articles
-    </div>
-  )}
+  
+{isSavedPage ? (
+  <div className="save-login-popup">
+    Remove from saved
+  </div>
+) : !isLoggedIn ? (
+  <div className="save-login-popup">
+    Sign in to save articles
+  </div>
+) : null}
+
 
 {showKeyword && (
   <div className="article__keyword">

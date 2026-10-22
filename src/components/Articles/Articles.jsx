@@ -21,14 +21,15 @@ function Articles({
   }
 
   return (
-    <div className="articles">
+    <section className="articles">
       <h2 className="articles__header">Search Results</h2>
       <div className="articles__container">
         {searchResults &&
           searchResults
             .slice(0, visibleCount)
             .map((article) => (
-              <ArticleCard key={article.url} article={article} searchTerm={searchTerm} savedArticles={savedArticles} isLoggedIn={isLoggedIn} onLogin={onLogin} setSavedArticles={setSavedArticles} />
+              <ArticleCard key={article.url} article={article} searchTerm={searchTerm} savedArticles={savedArticles}
+               isLoggedIn={isLoggedIn} onLogin={onLogin} setSavedArticles={setSavedArticles} />
             ))}
       </div>
       <button
@@ -37,7 +38,7 @@ function Articles({
       >
         Load More
       </button>
-    </div>
+    </section>
   );
 }
 

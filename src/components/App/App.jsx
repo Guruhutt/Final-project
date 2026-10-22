@@ -160,6 +160,7 @@ function App() {
           element={
             <ProtectedRoute isLoggedIn={isLoggedIn}>
               <SavedArticles
+                onLogin={handleOpenLogin}
                 userData={userData}
                 savedArticles={savedArticles}
                 setSavedArticles={setSavedArticles}

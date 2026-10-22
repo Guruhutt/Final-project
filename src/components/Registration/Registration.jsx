@@ -14,25 +14,55 @@ export default function RegistrationModal({
     password: "",
     name: "",
   });
+  const [errors, setErrors] = useState({});
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
+  
+const handleChange = (e) => {
+  const { name, value } = e.target;
 
-  const handleSubmit = (e) => {
-    console.log("Registration form submitted with:", data);
-    e.preventDefault();
-    if (!data.password) {
-      return alert("wrong password");
-    } else {
-      onRegistration(data);
-      onClose();
-    }
-  };
+  setData((prevData) => ({
+    ...prevData,
+    [name]: value,
+  }));
+
+  setErrors((prevErrors) => ({
+    ...prevErrors,
+    [name]: "",
+  }));
+};
+
+const handleSubmit = (e) => {
+  e.preventDefault();
+
+  const newErrors = {};
+
+  if (!data.email.trim()) {
+    newErrors.email = "Email is required";
+  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+    newErrors.email = "Please enter a valid email address";
+  }
+
+  if (!data.password.trim()) {
+    newErrors.password = "Password is required";
+  } else if (data.password.length < 2) {
+    newErrors.password = "Password must be at least 2 characters";
+  }
+
+  if (!data.name.trim()) {
+    newErrors.name = "Name is required";
+  } else if (data.name.trim().length < 2) {
+    newErrors.name = "Name must be at least 2 characters";
+  }
+
+  setErrors(newErrors);
+
+  if (Object.keys(newErrors).length > 0) {
+    return;
+  }
+
+  onRegistration(data);
+};
+
 
   return (
     <ModalWithForm
@@ -56,6 +86,7 @@ export default function RegistrationModal({
           placeholder="email"
           minLength={2}
         />
+        {errors.email && <span className="modal__error">{errors.email}</span>}
       </label>
 
       <label htmlFor="registration-password" className="modal__label">
@@ -71,6 +102,7 @@ export default function RegistrationModal({
           minLength={2}
           placeholder="password"
         />
+        {errors.password && <span className="modal__error">{errors.password}</span>}
       </label>
 
       <label htmlFor="registration-name" className="modal__label">
@@ -86,6 +118,9 @@ export default function RegistrationModal({
           minLength={2}
           placeholder="name"
         />
+        {errors.name && (
+  <span className="modal__error">{errors.name}</span>
+)}
       </label>
       <button type="submit" className="modal__submit">
         sign up

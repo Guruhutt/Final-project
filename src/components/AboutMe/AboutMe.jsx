@@ -4,7 +4,7 @@ import Dev_photo from "../../assets/images/Dev_photo.jpg";
 
 function AboutMe() {
   return (
-    <div className="about-me">
+    <section className="about-me">
       <div className="about-me__container">
         <h2 className="about-me__header">About Me</h2>
         <p className="about-me__description">
@@ -15,7 +15,7 @@ function AboutMe() {
         </p>
       </div>
       <img className="about-me__image" src={Dev_photo} alt="Developer Photo" />
-    </div>
+    </section>
   );
 }
 export default AboutMe;

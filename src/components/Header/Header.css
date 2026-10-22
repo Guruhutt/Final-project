@@ -114,13 +114,32 @@
   opacity: 1;
 }
 
+
 .hamburger-btn {
-  display: none;
+  display: block;
+  background: none;
+  border: none;
+  padding: 0;
   width: 27px;
   height: 27px;
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
 }
 
+
 @media screen and (max-width: 360px) {
+
+  
+.header {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px 20px;
+}
+
 
   .hamburger-btn {
     display: block;
@@ -130,27 +149,31 @@
     font-size: 28px;
     cursor: pointer;
     position: absolute;
-    left: 320px;
+    left: 280px;
     z-index: 2;
   }
 
-  .mobile-menu {
-    position: absolute;
-    left: 0;
-    background: #1a1b22;
-    display: flex;
-    flex-direction: column;
-    padding: 72px 20px 20px 20px;
-    gap: 20px;
-    width: 320px;
-    max-height: 230px;
-    opacity: 1;
-    z-index: 1;
-    top: 0px;
-    font-family: Roboto , Arial, Helvetica, sans-serif;
-    font-weight: 500;
-    font-size: 18px;
+
+.mobile-menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  background: #1a1b22;
+  display: flex;
+  flex-direction: column;
+  padding: 72px 20px 20px;
+  gap: 20px;
+  max-height: 230px;
+  opacity: 1;
+  z-index: 1;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
 }
+
 
   .mobile-link {
     color: white;
@@ -162,6 +185,8 @@
     height: 56px;
     border-radius: 100px;
     border: 1px solid white;
+      box-sizing: border-box;
+  width: 100%;
     background: transparent;
     color: white;
     cursor: pointer;

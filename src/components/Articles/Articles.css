@@ -114,6 +114,8 @@
   background-color: white;
 }
 
+
+
 .article__save-button.saved {
   background-image: url(../../assets/images/bookmark_saved.svg);
   background-color: white;
@@ -217,6 +219,13 @@
   object-fit: cover;
 }
 
+.article__save-button.delete-button {
+  background-image: url("../../assets/images/trash_can.svg");
+}
+
+.article__save-button.delete-button:not(.saved):hover {
+  background-image: url("../../assets/images/trash_can_hover.svg");
+}
 @media screen and (min-width: 430px) and (max-width: 768px) {
   .articles__container {
     grid-template-columns: repeat(3, 1fr);
