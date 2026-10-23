@@ -26,12 +26,15 @@ function App() {
   const [savedArticles, setSavedArticles] = React.useState([]);
   const [searchTerm, setSearchTerm] = useState(" ");
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const api = NEWS_API;
 
-  const fetchData = (searchTerm) => {
+  
+const fetchData = (searchTerm) => {
   setError(null);
+  setIsLoading(true);
 
   api
     .getNews(searchTerm)
@@ -42,6 +45,9 @@ function App() {
     .catch((error) => {
       console.error(error);
       setError("Failed to fetch news articles.");
+    })
+    .finally(() => {
+      setIsLoading(false);
     });
 };
 
@@ -141,6 +147,7 @@ function App() {
 
               {searchResults.length > 0 && (
                 <Articles
+                  isLoading={isLoading}
                   onLogin={handleOpenLogin}
                   isLoggedIn={isLoggedIn}
                   searchTerm={searchTerm}

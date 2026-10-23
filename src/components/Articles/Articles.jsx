@@ -10,14 +10,14 @@ function Articles({
   api,
   isLoggedIn,
   onLogin,
-  searchTerm
+  searchTerm,
+  isLoading
 }) {
-  const [isLoading] = useState(false);
   const [visibleCount, setVisibleCount] = useState(3);
  
 
   if (isLoading) {
-    return <div className="circle-preloader"> Loading...</div>;
+    return <div className="circle-preloader"> Searching for news...</div>;
   }
 
   return (
