@@ -1,0 +1,45 @@
+import "./Articles.css";
+import React from "react";
+import { useState } from "react";
+import ArticleCard from "./ArticleCards";
+
+function Articles({
+  searchResults,
+  savedArticles,
+  setSavedArticles,
+  api,
+  isLoggedIn,
+  onLogin,
+  searchTerm,
+  isLoading
+}) {
+  const [visibleCount, setVisibleCount] = useState(3);
+ 
+
+  if (isLoading) {
+    return <div className="circle-preloader"> Searching for news...</div>;
+  }
+
+  return (
+    <section className="articles">
+      <h2 className="articles__header">Search Results</h2>
+      <div className="articles__container">
+        {searchResults &&
+          searchResults
+            .slice(0, visibleCount)
+            .map((article) => (
+              <ArticleCard key={article.url} article={article} searchTerm={searchTerm} savedArticles={savedArticles}
+               isLoggedIn={isLoggedIn} onLogin={onLogin} setSavedArticles={setSavedArticles} />
+            ))}
+      </div>
+      <button
+        onClick={() => setVisibleCount(visibleCount + 3)}
+        className="article__load-btn"
+      >
+        Load More
+      </button>
+    </section>
+  );
+}
+
+export default Articles;
