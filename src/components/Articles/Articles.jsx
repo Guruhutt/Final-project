@@ -17,8 +17,13 @@ function Articles({
  
 
   if (isLoading) {
-    return <div className="circle-preloader"> Searching for news...</div>;
-  }
+  return (
+    <div className="articles articles__loading">
+      <div className="circle-preloader"></div>
+      <p className="circle-preloader__text" >Searching for news...</p>
+    </div>
+  );
+}
 
   return (
     <section className="articles">

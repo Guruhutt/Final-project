@@ -79,6 +79,10 @@
   color: #1A1B22;
 }
 
+.header_dark .hamburger-btn {
+  filter: brightness(0);
+}
+
 .header_dark .home-link,
 .header_dark .saved-articles-link {
   color: black;
@@ -131,7 +135,7 @@
 }
 
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 320px) {
 
   
 .header {
