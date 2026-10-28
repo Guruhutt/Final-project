@@ -37,6 +37,7 @@
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
+  cursor: pointer;
 }
 
 .header-login-btn {
@@ -58,7 +59,7 @@
 
 .saved-articles-link {
   text-decoration: none;
-  color: #b6bcbf;
+  color: #B6BCBF;
   margin-right: 42px;
   font-family: roboto, Arial, Helvetica, sans-serif;
   font-weight: 500;

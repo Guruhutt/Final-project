@@ -1,7 +1,10 @@
 class Api {
   constructor(apiKey) {
     this.apiKey = apiKey;
-    this.baseUrl = "https://newsapi.org/v2/everything";
+    const newsApiBaseUrl = process.env.NODE_ENV === "production" 
+  ? "https://news-api-proxy.up.railway.app/news/v2/everything"
+  : "https://newsapi.org/v2/everything";
+   this.baseUrl = newsApiBaseUrl;
   }
 
   getNews(query) {

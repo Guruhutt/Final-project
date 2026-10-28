@@ -4,12 +4,12 @@ import App from "./components/App/App.jsx";
 import "./index.css";
 import "./components/utils/normalize.css";
 import "./components/utils/fonts.css";
-import { HashRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <HashRouter>
+    <BrowserRouter basename="/Final-project/">
       <App />
-    </HashRouter>
+    </BrowserRouter>
   </React.StrictMode>,
 );
